@@ -63,5 +63,6 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
 
   private reset(): void {
     this.selectedTable = null;
+    this.tableChange.emit(null);
   }
 }
