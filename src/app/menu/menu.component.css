@@ -6,9 +6,11 @@
   top: 40px;
   width: 50px;
   height: 100vh;
-  background-color: #212223;;
+  background-color: #212223;
   padding-top: 10px;
   transition: 0.5s;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
@@ -17,8 +19,38 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  position: relative;
+  left: 50px;
+  top: -45px;
+  width: 0;
+  transition: all .1s linear;
 }
 
-.toggle-button--rotate {
-  transform: rotate(180dg);
+.nav-expanded {
+  width: 150px;
+  transition: all .1s linear;
+}
+
+.toggle-button span{
+  transform: rotateY(0deg);
+  transition: all .5s linear;
+}
+
+.toggle-button--rotate  span{
+  transition: all .5s linear;
+  transform: rotateY(180deg);
+}
+
+.nav-expanded {
+  width: 150px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  padding-top: 20px;
+  background-color: #212221;
+  height: 100%;
 }

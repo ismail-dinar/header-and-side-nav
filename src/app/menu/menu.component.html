@@ -1,5 +1,21 @@
-<div class="l-navbar" id="nav-bar">
-  <nav class="nav">
-    <button kendoButton icon="arrow-60-right" fillMode="clear" (click)="toggleMenu()"></button>
+<div class="l-navbar">
+  <button
+    kendoButton
+    [ngClass]="{
+      'toggle-button--rotate': expanded,
+      'toggle-button': !expanded
+    }"
+    icon="arrow-60-right"
+    fillMode="clear"
+    (click)="toggleMenu()"
+  ></button>
+  <nav class="nav" [ngClass]="{ 'nav-expanded': expanded }">
+    <div class="nav-list">
+      <ng-container *ngFor="let table of tables">
+        <button kendoButton>
+          {{ table.name }}
+        </button>
+      </ng-container>
+    </div>
   </nav>
 </div>

@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, DrawerModule, BrowserAnimationsModule, ButtonsModule],
+  imports: [FormsModule, DrawerModule, BrowserAnimationsModule, ButtonsModule],
   declarations: [
     AppComponent,
     HelloComponent,
