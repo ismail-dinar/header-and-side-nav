@@ -11,8 +11,13 @@
   ></button>
   <nav class="nav" [ngClass]="{ 'nav-expanded': expanded }">
     <div class="nav-list">
-      <ng-container *ngFor="let table of tables">
-        <button kendoButton>
+      <ng-container *ngFor="let table of tables; index as i">
+        <button
+          class="menu-item"
+          kendoButton
+          [ngClass]="{'menu-item--active': selectedTable === table}"
+          (click)="onSelect(table)"
+        >
           {{ table.name }}
         </button>
       </ng-container>

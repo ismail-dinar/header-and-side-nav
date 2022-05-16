@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { Table } from './interfaces/table.interface';
 
 @Component({
   selector: 'my-app',
@@ -6,5 +7,11 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
+  public table: Table;
+
+  public onTableChnage(table: Table): void {
+    this.table = table
+  }
 }
+
+

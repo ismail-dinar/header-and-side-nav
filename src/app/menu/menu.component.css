@@ -54,3 +54,13 @@
   background-color: #212221;
   height: 100%;
 }
+.menu-item {
+  background-color: transparent;
+}
+.menu-item:hover {
+  background-color: orange;
+}
+
+.menu-item--active {
+  background-color: orange;
+}

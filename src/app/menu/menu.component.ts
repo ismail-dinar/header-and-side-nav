@@ -1,12 +1,17 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { ButtonDirective } from '@progress/kendo-angular-buttons';
-import { DrawerItem, DrawerSelectEvent } from '@progress/kendo-angular-layout';
+import { isEqual } from 'lodash';
 import { fromEvent, Subscription } from 'rxjs';
 import { scan, startWith } from 'rxjs/operators';
-
-interface Table {
-  name: string;
-}
+import { Table } from '../interfaces/table.interface';
 
 @Component({
   selector: 'app-menu',
@@ -16,32 +21,47 @@ interface Table {
 export class MenuComponent implements AfterViewInit, OnDestroy {
   @ViewChild(ButtonDirective, { read: ElementRef }) public button: ElementRef;
 
-  public expanded:boolean = false;
+  @Output() public tableChange: EventEmitter<Table> = new EventEmitter<Table>();
+
+  public expanded: boolean = false;
   public selectedTable: Table;
 
-  public tables: Array<Table> = [
-    { name: 'Account' },
-    { name: 'Person'},
-  ];
+  public tables: Array<Table> = [{ name: 'Account' }, { name: 'Person' }];
 
   private subscriptions: Subscription = new Subscription();
 
   public ngAfterViewInit(): void {
-    this.subscriptions.add(fromEvent(this.button.nativeElement, 'click').pipe(
-      scan((currentState) => !currentState, false),
-      startWith(false)
-    ).subscribe((expanded) => {
-      this.expanded = expanded
-    }));
+    this.subscriptions.add(
+      fromEvent(this.button.nativeElement, 'click')
+        .pipe(
+          scan((currentState) => !currentState, false),
+          startWith(true)
+        )
+        .subscribe((expanded) => {
+          this.expanded = expanded;
+          if (!expanded) {
+            this.reset();
+          }
+        })
+    );
   }
 
-  public onSelect(ev: DrawerSelectEvent): void {
-    this.selectedTable = ev.item.text;
+  public onSelect(table: Table): void {
+    this.selectedTable = table;
+    this.tableChange.emit(table);
   }
 
   public toggleMenu(): void {}
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  public isSelected(table: Table): boolean {
+    return isEqual(table, this.selectedTable);
+  }
+
+  private reset(): void {
+    this.selectedTable = null;
   }
 }
