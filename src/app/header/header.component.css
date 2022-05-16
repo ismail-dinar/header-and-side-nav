@@ -1,0 +1,19 @@
+:host {
+  align-items: center;
+  display: flex;
+}
+
+.app-header {
+  background-color: #212223;
+  min-height: 40px;
+  max-height: 40px;
+  color: #efefef;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.app-header img {
+  padding: 2px;
+  width: 30px;
+}
