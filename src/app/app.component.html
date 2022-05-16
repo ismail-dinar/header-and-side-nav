@@ -1,6 +1,5 @@
 <app-header> </app-header>
 
-<app-menu (tableChange)="onTableChange()"> </app-menu>
-
+<app-menu (tableChange)="onTableChange($event)"> </app-menu>
 
 <app-grid [table]="table"></app-grid>
