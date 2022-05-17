@@ -8,8 +8,13 @@ import { Table } from './interfaces/table.interface';
 })
 export class AppComponent {
   public table: Table;
+  public menuExpanded: boolean = false;
 
   public onTableChange(table: Table): void {
     this.table = table;
+  }
+
+  public onMenuExpansion(expanded: boolean): void {
+    this.menuExpanded = expanded;
   }
 }

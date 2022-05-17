@@ -1,3 +1,8 @@
-p {
-  font-family: Lato;
+.grid--menu-expanded {
+  margin-left: 250px;
+}
+
+app-grid {
+  margin-left: 50px;
+  transition: margin-left .5s;
 }

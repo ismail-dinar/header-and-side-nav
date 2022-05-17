@@ -1,5 +1,5 @@
 <app-header> </app-header>
 
-<app-menu (tableChange)="onTableChange($event)"> </app-menu>
+<app-menu (tableChange)="onTableChange($event)" (expand)="onMenuExpansion($event)"> </app-menu>
 
-<app-grid [table]="table"></app-grid>
+<app-grid [table]="table" [ngClass]="{'grid--menu-expanded': menuExpanded}"></app-grid>

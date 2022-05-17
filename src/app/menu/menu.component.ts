@@ -23,6 +23,8 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
 
   @Output() public tableChange: EventEmitter<Table> = new EventEmitter<Table>();
 
+  @Output() public expand: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   public expanded: boolean = false;
   public selectedTable: Table;
 
@@ -35,9 +37,10 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
       fromEvent(this.button.nativeElement, 'click')
         .pipe(
           scan((currentState) => !currentState, false),
-          startWith(true)
+          startWith(false)
         )
         .subscribe((expanded) => {
+          this.expand.emit(expanded);
           this.expanded = expanded;
           if (!expanded) {
             this.reset();
