@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Table } from '../interfaces/table.interface';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-grid',
@@ -7,5 +9,7 @@ import { Table } from '../interfaces/table.interface';
   styleUrls: ['./grid.component.css'],
 })
 export class GridComponent {
-  @Input() table: Table;
+  public currentTable$: Observable<Table> = this.stateService.currentTable$;
+
+  public constructor(private stateService: StateService) {}
 }

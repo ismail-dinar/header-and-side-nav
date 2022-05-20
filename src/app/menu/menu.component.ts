@@ -9,9 +9,10 @@ import {
 } from '@angular/core';
 import { ButtonDirective } from '@progress/kendo-angular-buttons';
 import { isEqual } from 'lodash';
-import { fromEvent, Subscription } from 'rxjs';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 import { scan, startWith } from 'rxjs/operators';
 import { Table } from '../interfaces/table.interface';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,11 +27,12 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   @Output() public expand: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public expanded: boolean = false;
-  public selectedTable: Table;
 
   public tables: Array<Table> = [{ name: 'Account' }, { name: 'Person' }];
 
   private subscriptions: Subscription = new Subscription();
+
+  public constructor(private stateService: StateService) {}
 
   public ngAfterViewInit(): void {
     this.subscriptions.add(
@@ -42,15 +44,12 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
         .subscribe((expanded) => {
           this.expand.emit(expanded);
           this.expanded = expanded;
-          if (!expanded) {
-            this.reset();
-          }
         })
     );
   }
 
   public onSelect(table: Table): void {
-    this.selectedTable = table;
+    this.stateService.setCurrentTable(table);
     this.tableChange.emit(table);
   }
 
@@ -60,12 +59,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  public isSelected(table: Table): boolean {
-    return isEqual(table, this.selectedTable);
-  }
-
-  private reset(): void {
-    this.selectedTable = null;
-    this.tableChange.emit(null);
+  public isSelected(table: Table): Observable<boolean> {
+    return this.stateService.isSelected(table);
   }
 }

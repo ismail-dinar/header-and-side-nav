@@ -10,6 +10,7 @@ import { DrawerModule } from '@progress/kendo-angular-layout';
 import { GridComponent } from './grid/grid.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   imports: [FormsModule, DrawerModule, BrowserAnimationsModule, ButtonsModule],
@@ -19,6 +20,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     HeaderComponent,
     MenuComponent,
     GridComponent,
+    MainComponent,
   ],
   bootstrap: [AppComponent],
 })
