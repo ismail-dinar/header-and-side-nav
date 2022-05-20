@@ -1,8 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
 .main-expanded {
   margin-left: 250px;
 }
 
 app-main {
   margin-left: 50px;
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
 }
