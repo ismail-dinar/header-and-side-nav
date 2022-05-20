@@ -1,8 +1,8 @@
-.grid--menu-expanded {
+.main-expanded {
   margin-left: 250px;
 }
 
-app-grid {
+app-main {
   margin-left: 50px;
   transition: margin-left .5s;
 }
