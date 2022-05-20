@@ -1,5 +1,7 @@
 import { Component, VERSION } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Table } from './interfaces/table.interface';
+import { MenuService } from './services/menu.service';
 
 @Component({
   selector: 'my-app',
@@ -7,14 +9,7 @@ import { Table } from './interfaces/table.interface';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public table: Table;
-  public menuExpanded: boolean = false;
+  public  menuExpanded:Observable<boolean> = this.menuService.expanded$;
 
-  public onTableChange(table: Table): void {
-    this.table = table;
-  }
-
-  public onMenuExpansion(expanded: boolean): void {
-    this.menuExpanded = expanded;
-  }
+  public constructor(private menuService: MenuService) {}
 }

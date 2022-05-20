@@ -12,6 +12,7 @@ import { isEqual } from 'lodash';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { scan, startWith } from 'rxjs/operators';
 import { Table } from '../interfaces/table.interface';
+import { MenuService } from '../services/menu.service';
 import { StateService } from '../services/state.service';
 
 @Component({
@@ -24,15 +25,13 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
 
   @Output() public tableChange: EventEmitter<Table> = new EventEmitter<Table>();
 
-  @Output() public expand: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  public expanded: boolean = false;
+  public expanded$: Observable<boolean> = this.menuService.expanded$;
 
   public tables: Array<Table> = [{ name: 'Account' }, { name: 'Person' }];
 
   private subscriptions: Subscription = new Subscription();
 
-  public constructor(private stateService: StateService) {}
+  public constructor(private stateService: StateService, private menuService: MenuService) {}
 
   public ngAfterViewInit(): void {
     this.subscriptions.add(
@@ -42,8 +41,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
           startWith(false)
         )
         .subscribe((expanded) => {
-          this.expand.emit(expanded);
-          this.expanded = expanded;
+          this.menuService.setExpanded(expanded);
         })
     );
   }

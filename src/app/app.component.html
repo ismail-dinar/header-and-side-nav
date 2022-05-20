@@ -1,9 +1,5 @@
 <app-header> </app-header>
 
-<app-menu
-  (tableChange)="onTableChange($event)"
-  (expand)="onMenuExpansion($event)"
->
-</app-menu>
+<app-menu></app-menu>
 
-<app-main [ngClass]="{ 'main-expanded': menuExpanded }"></app-main>
+<app-main [ngClass]="{ 'main-expanded': menuExpanded | async }"></app-main>

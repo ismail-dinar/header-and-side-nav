@@ -1,26 +1,28 @@
-<div class="side-bar">
-  <button
-    kendoButton
-    [ngClass]="{
-      'toggle-button--rotate': expanded,
-      'toggle-button': !expanded
-    }"
-    icon="arrow-60-right"
-    fillMode="clear"
-    (click)="toggleMenu()"
-  ></button>
-</div>
-<nav class="nav" [ngClass]="{ expanded: expanded }">
-  <div class="nav-list">
-    <ng-container *ngFor="let table of tables; index as i">
-      <button
-        class="menu-item"
-        kendoButton
-        [ngClass]="{ 'menu-item--active': isSelected(table) | async }"
-        (click)="onSelect(table)"
-      >
-        {{ table.name }}
-      </button>
-    </ng-container>
+<ng-container *ngIf="{ value: expanded$ | async } as expanded">
+  <div class="side-bar">
+    <button
+      kendoButton
+      [ngClass]="{
+        'toggle-button--rotate': expanded.value,
+        'toggle-button': !expanded.value
+      }"
+      icon="arrow-60-right"
+      fillMode="clear"
+      (click)="toggleMenu()"
+    ></button>
   </div>
-</nav>
+  <nav class="nav" [ngClass]="{ expanded: expanded.value }">
+    <div class="nav-list">
+      <ng-container *ngFor="let table of tables; index as i">
+        <button
+          class="menu-item"
+          kendoButton
+          [ngClass]="{ 'menu-item--active': isSelected(table) | async }"
+          (click)="onSelect(table)"
+        >
+          {{ table.name }}
+        </button>
+      </ng-container>
+    </div>
+  </nav>
+</ng-container>

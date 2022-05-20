@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class MenuService {
   private expandedSubject: ReplaySubject<boolean> = new ReplaySubject<boolean>(
     1
@@ -11,4 +11,5 @@ export class MenuService {
   public setExpanded(exapnded: boolean): void {
     this.expandedSubject.next(exapnded);
   }
+
 }
