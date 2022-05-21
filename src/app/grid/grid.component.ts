@@ -12,7 +12,7 @@ import { StateService } from '../services/state.service';
 })
 export class GridComponent {
   public message: string;
-  public gridData: Observable<TableData> = this.dataService.getData();
+  public gridData$: Observable<TableData> = this.dataService.getData();
 
   public currentTable$: Observable<Table> =
     this.stateService.currentTable$.pipe(

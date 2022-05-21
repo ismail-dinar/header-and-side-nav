@@ -1,6 +1,5 @@
 <ng-container *ngIf="{ value: currentTable$ | async } as table">
-  <app-section *ngIf="table.value" [title]="table.value?.name">
-    <div class="section-content">this is the content</div>
+  <app-section *ngIf="table.value" [title]="table.value?.displayName">
     <div class="header-actions">
       <button
         kendoButton
@@ -9,6 +8,8 @@
         themeColor="primary"
       ></button>
     </div>
+
+    <div class="section-content"><kendo-grid [data]="gridData$ | async"></kendo-grid></div>
   </app-section>
   <app-no-data [message]="message"></app-no-data>
 </ng-container>

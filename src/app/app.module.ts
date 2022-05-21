@@ -15,6 +15,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { NoDataComponent } from './no-data/no-data.component';
 import { TypographyModule } from '@progress/kendo-angular-typography';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ButtonsModule,
     LayoutModule,
     TypographyModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    GridModule,
   ],
   declarations: [
     AppComponent,
