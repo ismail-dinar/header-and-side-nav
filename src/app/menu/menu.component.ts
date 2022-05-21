@@ -4,6 +4,7 @@ import { ButtonDirective } from '@progress/kendo-angular-buttons';
 import { fromEvent, Observable } from 'rxjs';
 import { scan, startWith } from 'rxjs/operators';
 import { Table, TableData } from '../interfaces/table.interface';
+import { DataService } from '../services/data.service';
 import { MenuService } from '../services/menu.service';
 import { StateService } from '../services/state.service';
 
@@ -18,11 +19,12 @@ export class MenuComponent implements AfterViewInit {
 
   public expanded$: Observable<boolean> = this.menuService.expanded$;
 
-  public tables: Array<Table>;;
+  public tables$: Observable<Array<Table>> = this.dataService.getTables();
 
   public constructor(
     private stateService: StateService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private dataService: DataService
   ) {}
 
   public ngAfterViewInit(): void {

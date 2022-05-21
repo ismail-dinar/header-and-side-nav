@@ -1,6 +1,6 @@
-import { Table } from "../interfaces/table.interface";
+import { TableData } from "../interfaces/table.interface";
 
-export const data: Table = [
+export const data: TableData = [
   { name: 'asma', code: 'asma', displayOrder: 0 },
   { name: 'okokk', code: 'okok', displayOrder: 0 },
   { name: 'string', code: 'asmabj', displayOrder: 0 },

@@ -13,14 +13,14 @@
   </div>
   <nav class="nav" [ngClass]="{ expanded: expanded.value }">
     <div class="nav-list">
-      <ng-container *ngFor="let table of tables; index as i">
+      <ng-container *ngFor="let table of tables$ | async; index as i">
         <button
           class="menu-item"
           kendoButton
           [ngClass]="{ 'menu-item--active': isSelected(table) | async }"
           (click)="onSelect(table)"
         >
-          {{ table.name }}
+          <span kendoTypography textAlign="left" class="menu-item--text">{{ table.displayName }}</span>
         </button>
       </ng-container>
     </div>

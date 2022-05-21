@@ -50,6 +50,10 @@
 .menu-item {
   background-color: transparent;
   color: white;
+
+  &--text {
+    width: 100%;
+  }
 }
 .menu-item:hover {
   background-color: #f5761a;
