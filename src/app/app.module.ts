@@ -13,6 +13,8 @@ import { MainComponent } from './main/main.component';
 import { SectionComponent } from './section/section.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { NoDataComponent } from './no-data/no-data.component';
+import { TypographyModule } from '@progress/kendo-angular-typography';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { NoDataComponent } from './no-data/no-data.component';
     BrowserAnimationsModule,
     ButtonsModule,
     LayoutModule,
+    TypographyModule,
+    FlexLayoutModule
   ],
   declarations: [
     AppComponent,
