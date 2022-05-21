@@ -13,7 +13,7 @@ export const messages: Record<NoDataTypeEnum, string> = {
 })
 export class NoDataComponent {
   @Input() public type: NoDataTypeEnum;
-  @Input() public message: string;
+  @Input() public message: string | null;
 
   public getMessage(): string {
     if (this.message) {
