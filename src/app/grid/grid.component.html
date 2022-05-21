@@ -1,1 +1,5 @@
-<p>{{ currentTable$ | async | json}}</p>
+<ng-container *ngIf="{ value: currentTable$ | async } as table">
+  <app-section [title]="table.value?.name"> </app-section>
+</ng-container>
+
+

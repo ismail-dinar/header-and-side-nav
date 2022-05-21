@@ -11,9 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { MainComponent } from './main/main.component';
 import { SectionComponent } from './section/section.component';
+import { LayoutModule } from '@progress/kendo-angular-layout';
 
 @NgModule({
-  imports: [FormsModule, DrawerModule, BrowserAnimationsModule, ButtonsModule],
+  imports: [
+    FormsModule,
+    DrawerModule,
+    BrowserAnimationsModule,
+    ButtonsModule,
+    LayoutModule,
+  ],
   declarations: [
     AppComponent,
     HelloComponent,
