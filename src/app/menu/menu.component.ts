@@ -3,7 +3,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ButtonDirective } from '@progress/kendo-angular-buttons';
 import { fromEvent, Observable } from 'rxjs';
 import { scan, startWith } from 'rxjs/operators';
-import { Table } from '../interfaces/table.interface';
+import { Table, TableData } from '../interfaces/table.interface';
 import { MenuService } from '../services/menu.service';
 import { StateService } from '../services/state.service';
 
@@ -18,7 +18,7 @@ export class MenuComponent implements AfterViewInit {
 
   public expanded$: Observable<boolean> = this.menuService.expanded$;
 
-  public tables: Array<Table> = [{ name: 'Account' }, { name: 'Person' }];
+  public tables: Array<Table>;;
 
   public constructor(
     private stateService: StateService,

@@ -1,6 +1,5 @@
 import { Component, VERSION } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Table } from './interfaces/table.interface';
 import { MenuService } from './services/menu.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { MenuService } from './services/menu.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public  menuExpanded:Observable<boolean> = this.menuService.expanded$;
+  public menuExpanded: Observable<boolean> = this.menuService.expanded$;
 
   public constructor(private menuService: MenuService) {}
 }

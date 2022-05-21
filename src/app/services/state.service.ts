@@ -8,7 +8,8 @@ import { Table } from '../interfaces/table.interface';
 export class StateService {
   private currentTableSubject: BehaviorSubject<Table> = new BehaviorSubject<Table>(
     {
-      name: 'Test',
+      name: 'test_table',
+      displayName: 'Test Table'
     }
   );
   public currentTable$: Observable<Table> =
