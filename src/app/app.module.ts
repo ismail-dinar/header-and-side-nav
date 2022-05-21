@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -11,6 +10,7 @@ import { GridComponent } from './grid/grid.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { MainComponent } from './main/main.component';
+import { SectionComponent } from './section/section.component';
 
 @NgModule({
   imports: [FormsModule, DrawerModule, BrowserAnimationsModule, ButtonsModule],
@@ -21,6 +21,7 @@ import { MainComponent } from './main/main.component';
     MenuComponent,
     GridComponent,
     MainComponent,
+    SectionComponent,
   ],
   bootstrap: [AppComponent],
 })
