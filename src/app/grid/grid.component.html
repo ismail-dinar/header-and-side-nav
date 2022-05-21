@@ -1,5 +1,6 @@
 <ng-container *ngIf="{ value: currentTable$ | async } as table">
   <app-section [title]="table.value?.name"> </app-section>
+  <app-no-data></app-no-data>
 </ng-container>
 
 

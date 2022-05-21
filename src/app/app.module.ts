@@ -12,6 +12,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { MainComponent } from './main/main.component';
 import { SectionComponent } from './section/section.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
+import { NoDataComponent } from './no-data/no-data.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
     GridComponent,
     MainComponent,
     SectionComponent,
+    NoDataComponent,
   ],
   bootstrap: [AppComponent],
 })
