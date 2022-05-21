@@ -11,7 +11,7 @@ import { StateService } from '../services/state.service';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
-  public message: string;
+  public message: string | null;
   public gridData$: Observable<TableData> = this.dataService.getData();
 
   public currentTable$: Observable<Table> =

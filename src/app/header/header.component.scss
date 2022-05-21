@@ -1,6 +1,9 @@
 :host {
   align-items: center;
   display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
 }
 
 .app-header {
