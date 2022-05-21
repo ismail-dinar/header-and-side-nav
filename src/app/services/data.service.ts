@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
+import { get } from 'lodash';
 import { Observable, of } from 'rxjs';
 import { Column } from '../interfaces/column.interface';
 import { Table, TableData } from '../interfaces/table.interface';
-import { columns } from '../mocks/columns';
+import { columns, tablesColumns } from '../mocks/columns';
 import { data } from '../mocks/data';
 import { tables } from '../mocks/tables';
 
 @Injectable({providedIn: 'root'})
 export class DataService {
-  public getData(): Observable<TableData> {
-    return of(data);
+  public getData(table: Table): Observable<TableData> {
+    return of(get(data, table.name));
   }
 
-  public getColumns(): Observable<Array<Column>> {
-    return of(columns);
+  public getColumns(table: Table): Observable<Array<Column>> {
+    return of(get(tablesColumns, table.name));
   }
 
   public getTables(): Observable<Array<Table>> {

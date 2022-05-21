@@ -7,10 +7,7 @@ import { Table } from '../interfaces/table.interface';
 @Injectable({ providedIn: 'root' })
 export class StateService {
   private currentTableSubject: BehaviorSubject<Table> = new BehaviorSubject<Table>(
-    {
-      name: 'test_table',
-      displayName: 'Test Table'
-    }
+    null
   );
   public currentTable$: Observable<Table> =
     this.currentTableSubject.asObservable();
@@ -21,7 +18,7 @@ export class StateService {
 
   public isSelected(table: Table): Observable<boolean> {
     return this.currentTable$.pipe(
-      map((currentTbale) => isEqual(currentTbale, table))
+      map((currentTable) => isEqual(currentTable, table))
     );
   }
 }

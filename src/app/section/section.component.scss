@@ -1,8 +1,18 @@
 :host {
   display: flex;
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+
 
   .k-card {
     border-radius: 0;
+    overflow: hidden;
+    width: auto !important;
+  }
+
+  .k-card-body {
+    overflow: hidden;
   }
 
   .k-card-header {

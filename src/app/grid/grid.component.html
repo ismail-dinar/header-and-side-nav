@@ -9,7 +9,11 @@
       ></button>
     </div>
 
-    <div class="section-content"><kendo-grid [data]="gridData$ | async"></kendo-grid></div>
+    <div class="section-content">
+      <kendo-grid [data]="gridData$ | async" scrollable="scrollable" [style.height.%]="100">
+        <kendo-grid-column *ngFor="let col of columns$ | async" [field]="col.name"></kendo-grid-column>
+      </kendo-grid>
+    </div>
   </app-section>
   <app-no-data [message]="message"></app-no-data>
 </ng-container>
