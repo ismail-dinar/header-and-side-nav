@@ -1,4 +1,14 @@
 <ng-container *ngIf="{ value: currentTable$ | async } as table">
-  <app-section *ngIf="table.value" [title]="table.value?.name"> </app-section>
+  <app-section *ngIf="table.value" [title]="table.value?.name">
+    <div class="section-content">this is the content</div>
+    <div class="header-actions">
+      <button
+        kendoButton
+        icon="plus"
+        fillMode="outline"
+        themeColor="primary"
+      ></button>
+    </div>
+  </app-section>
   <app-no-data [message]="message"></app-no-data>
 </ng-container>

@@ -7,7 +7,9 @@ import { Table } from '../interfaces/table.interface';
 @Injectable({ providedIn: 'root' })
 export class StateService {
   private currentTableSubject: BehaviorSubject<Table> = new BehaviorSubject<Table>(
-    null
+    {
+      name: 'Test',
+    }
   );
   public currentTable$: Observable<Table> =
     this.currentTableSubject.asObservable();
