@@ -1,1 +1,4 @@
-@use '~@progress/angular-theme-material/card/_index.scss'
+$primary: #f5761a;
+
+@import 'node_modules/@progress/kendo-theme-default/scss/card/_index.scss';
+@import 'node_modules/@progress/kendo-theme-default/scss/button/_index.scss';
