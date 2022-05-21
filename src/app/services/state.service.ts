@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { isEqual } from 'lodash';
-import { Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Table } from '../interfaces/table.interface';
 
 @Injectable({ providedIn: 'root' })
 export class StateService {
-  private currentTableSubject: ReplaySubject<Table> = new ReplaySubject<Table>(
-    1
+  private currentTableSubject: BehaviorSubject<Table> = new BehaviorSubject<Table>(
+    null
   );
   public currentTable$: Observable<Table> =
     this.currentTableSubject.asObservable();
