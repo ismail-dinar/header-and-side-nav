@@ -7,7 +7,7 @@ import { StateService } from '../services/state.service';
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css'],
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
   public message: string;
