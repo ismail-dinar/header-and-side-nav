@@ -25,20 +25,20 @@ export const columns: Array<Column> = [
 
 export const tablesColumns: Record<string, Array<Column>> = {
   persons: [
-    { name: 'id', type: 'number' },
-    { name: 'firstName', type: 'text' },
-    { name: 'lastName', type: 'text' },
-    { name: 'email', type: 'email' },
-    { name: 'gender', type: 'lookup' },
-    { name: 'ipAddress', type: 'text' },
+    { name: 'id', type: 'number', required: true },
+    { name: 'firstName', type: 'text', required: true },
+    { name: 'lastName', type: 'text', required: true },
+    { name: 'email', type: 'email', required: true },
+    { name: 'gender', type: 'lookup', required: true   },
+    { name: 'ipAddress', type: 'text', required: true  },
   ],
   accounts: [
-    { name: 'id', type: 'number' },
-    { name: 'name', type: 'text' },
-    { name: 'description', type: 'textarea' },
-    { name: 'balance', type: 'number' },
-    { name: 'currency', type: 'lookup' },
-    { name: 'createdAt', type: 'date' },
-    { name: 'updatedAt', type: 'date' },
+    { name: 'id', type: 'number', required: true  },
+    { name: 'name', type: 'text', required: true  },
+    { name: 'description', type: 'textarea', required: true  },
+    { name: 'balance', type: 'number', required: true  },
+    { name: 'currency', type: 'lookup', required: true  },
+    { name: 'createdAt', type: 'date', required: true  },
+    { name: 'updatedAt', type: 'date', required: true  },
   ],
 };

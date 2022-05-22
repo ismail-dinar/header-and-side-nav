@@ -3,4 +3,5 @@ export type ColumnType = 'text' | 'textarea' | 'date' | 'number' | 'lookup' | 'e
 export interface Column {
   name: string;
   type: ColumnType;
+  required?: boolean;
 }

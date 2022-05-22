@@ -1,4 +1,6 @@
-<ng-container *ngIf="{ value: currentTable$ | async } as table">
+<ng-container
+  *ngIf="{ value: currentTable$ | async, columns: columns$ | async } as table"
+>
   <app-section *ngIf="table.value" [title]="table.value?.displayName">
     <div class="header-actions">
       <button
@@ -6,15 +8,47 @@
         icon="plus"
         fillMode="outline"
         themeColor="primary"
+        (click)="edit(table.value.displayName, table.columns, true)"
       ></button>
     </div>
 
     <div class="section-content">
-      <kendo-grid [data]="gridData$ | async" scrollable="scrollable" [style.height.%]="100">
-        <kendo-grid-column *ngFor="let col of columns$ | async" [field]="col.name"></kendo-grid-column>
-        <kendo-grid-command-column [width]="100" fxLayout="row" fxLayoutAlign="space-around center">
-          <ng-template kendoGridCellTemplate>
-            <button kendoGridEditCommand [primary]="true" icon="edit"></button>
+      <kendo-grid
+        [data]="gridData$ | async"
+        scrollable="scrollable"
+        [style.height.%]="100"
+      >
+        <ng-container *ngFor="let col of table.columns">
+          <kendo-grid-column
+            *ngIf="col.type !== 'lookup'"
+            [field]="col.name"
+            [title]="getDisplayName(col.name)"
+          ></kendo-grid-column>
+          <kendo-grid-column
+            *ngIf="col.type == 'lookup'"
+            [field]="col.name"
+            [title]="getDisplayName(col.name)"
+            >^
+            <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+              {{ dataItem[col.name].displayName }}
+            </ng-template></kendo-grid-column
+          >
+        </ng-container>
+
+        <kendo-grid-command-column
+          [width]="100"
+          fxLayout="row"
+          fxLayoutAlign="space-around center"
+        >
+          <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+            <button
+              kendoGridEditCommand
+              [primary]="true"
+              icon="edit"
+              (click)="
+                edit(table.value.displayName, table.columns, true, dataItem)
+              "
+            ></button>
             <button kendoGridRemoveCommand icon="delete"></button>
           </ng-template>
         </kendo-grid-command-column>

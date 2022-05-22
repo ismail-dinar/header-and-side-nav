@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutGap="40px">
+  <form class="k-form" [formGroup]="formlyForm.form">
+    <formly-form
+      [form]="formlyForm.form"
+      [model]="formlyForm.model"
+      [fields]="formlyForm.fields"
+    >
+    </formly-form>
+  </form>
+  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="24px">
+    <button kendoButton>Cancel</button>
+    <button kendoButton themeColor="primary" (click)="save()">Save</button>
+  </div>
+</div>
