@@ -4,7 +4,7 @@ import { AddEvent } from '@progress/kendo-angular-grid';
 import { cloneDeep, lowerFirst, startCase } from 'lodash';
 import { singular } from 'pluralize';
 import { Observable } from 'rxjs';
-import { switchMap, tap, filter } from 'rxjs/operators';
+import { switchMap, tap, filter, first } from 'rxjs/operators';
 import { EditFormComponent } from '../edit-form/edit-form.component';
 import { Column } from '../interfaces/column.interface';
 import { Table, TableData } from '../interfaces/table.interface';
@@ -63,5 +63,8 @@ export class GridComponent {
     windowInstance.columns = columns;
     windowInstance.isNew = isNew;
     windowInstance.model = cloneDeep(data);
+    windowInstance.cancelRequest.pipe(first()).subscribe(() => {
+      windowRef.close();
+    });
   }
 }

@@ -1,11 +1,11 @@
 import { data } from './../mocks/data';
-import { switchMap } from 'rxjs/operators';
+import { first, switchMap } from 'rxjs/operators';
 import { StateService } from './../services/state.service';
 import { EditService } from './../services/edit.service';
 import { Column } from './../interfaces/column.interface';
 import { IFormlyForm } from './../interfaces/formly-form.interface';
 import { FormlyFormBuilder } from './../services/formly-form-builder.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-form',
@@ -16,6 +16,7 @@ export class EditFormComponent implements OnInit {
   @Input() public columns: Column[];
   @Input() public isNew: boolean;
   @Input() public model: Record<string, any>;
+  @Output() public cancelRequest: EventEmitter<void> = new EventEmitter();
   public formlyForm: IFormlyForm;
 
   public constructor(
@@ -26,7 +27,7 @@ export class EditFormComponent implements OnInit {
 
   public ngOnInit(): void {
     this.formlyForm = this.formlyFormBuilder.buildForm(this.columns);
-    if(this.model) {
+    if (this.model) {
       this.formlyForm.model = this.model;
     }
   }
@@ -34,6 +35,7 @@ export class EditFormComponent implements OnInit {
   public save(): void {
     this.stateService.currentTable$
       .pipe(
+        first(),
         switchMap((table) =>
           this.isNew
             ? this.editService.add(this.formlyForm.model, table)
@@ -43,5 +45,9 @@ export class EditFormComponent implements OnInit {
       .subscribe((result) => {
         console.log(result);
       });
+  }
+
+  public cancel(): void {
+    this.cancelRequest.emit();
   }
 }
