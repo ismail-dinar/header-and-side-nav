@@ -12,6 +12,12 @@
     <div class="section-content">
       <kendo-grid [data]="gridData$ | async" scrollable="scrollable" [style.height.%]="100">
         <kendo-grid-column *ngFor="let col of columns$ | async" [field]="col.name"></kendo-grid-column>
+        <kendo-grid-command-column [width]="100" fxLayout="row" fxLayoutAlign="space-around center">
+          <ng-template kendoGridCellTemplate>
+            <button kendoGridEditCommand [primary]="true" icon="edit"></button>
+            <button kendoGridRemoveCommand icon="delete"></button>
+          </ng-template>
+        </kendo-grid-command-column>
       </kendo-grid>
     </div>
   </app-section>
